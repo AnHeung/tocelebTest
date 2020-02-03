@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    
+    <data>
+        <variable
+            name="fragment"
+            type="com.giftm.toceleb.ui.splashviewpager.SplashViewPagerFragment" />
+
+        <variable
+            name="viewmodel"
+            type="com.giftm.toceleb.ui.splashviewpager.SplashViewPagerViewModel" />
+        <variable
+            name="viewpagerAdapter"
+            type="com.giftm.toceleb.ui.adapter.PagerRecyclerAdapter" />
+        
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.splashviewpager.SplashViewPagerFragment">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/splash_viewpager"
+            bind_adapter="@{viewpagerAdapter}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </RelativeLayout>
+</layout>

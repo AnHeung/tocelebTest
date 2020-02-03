@@ -1,0 +1,116 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+String APK_NAME = "tocelb"
+String COMPANY_NAME = "giftm"
+String VERSION = "master"
+
+def getDate() {
+    def date = new Date()
+    def formattedDate = date.format('yyyy_MM_dd_HHmmss')
+    return formattedDate
+}
+
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "com.giftm.toceleb"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "${APK_NAME}_${VERSION}_${getDate()}_${variant.versionName}_${COMPANY_NAME}.apk"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+    implementation "androidx.appcompat:appcompat:$appCompatVersion"
+    implementation "androidx.core:core-ktx:$ktxVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+
+    //permission
+    implementation 'gun0912.ted:tedpermission:2.0.0'
+
+    // viewmodel
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+
+    implementation "com.google.android.material:material:$materialVersion"
+
+    //multidex
+    implementation 'com.android.support:multidex:1.0.3'
+
+    //버전체크
+    implementation 'org.jsoup:jsoup:1.11.3'
+
+    //parser
+    implementation "com.google.code.gson:gson:$gsonVersion"
+
+    implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navigationVersion"
+    implementation "androidx.recyclerview:recyclerview:$rootProject.recyclerViewVersion"
+    implementation "androidx.room:room-runtime:$rootProject.roomVersion"
+    implementation "androidx.work:work-runtime-ktx:$rootProject.workVersion"
+
+    // dependency injection
+    implementation "org.koin:koin-android:$koinVersion"
+    // reactive
+    implementation "io.reactivex.rxjava2:rxjava:$rxjava2Version"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxandroidVersion"
+
+    // https://mvnrepository.com/artifact/com.squareup.picasso/picasso
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'jp.wasabeef:picasso-transformations:2.2.1'
+
+    //editText
+    implementation 'com.rengwuxian.materialedittext:library:2.1.4'
+
+    // network
+    implementation "com.amitshekhar.android:rx2-android-networking:$rx2FastAndroidNetworking"
+
+    //viewPager2
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
+
+    //coroutine
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
+
+    // Testing dependencies
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    androidTestImplementation "androidx.arch.core:core-testing:$coreTestingVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$espressoVersion"
+    androidTestImplementation "androidx.test.ext:junit:$testExtJunit"
+    androidTestImplementation "androidx.test.uiautomator:uiautomator:$uiAutomatorVersion"
+    androidTestImplementation "androidx.work:work-testing:$workVersion"
+    androidTestImplementation "com.google.truth:truth:$truthVersion"
+    testImplementation "junit:junit:$junitVersion"
+}

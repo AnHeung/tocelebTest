@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="position"
+            type="Integer" />
+        <variable
+            name="viewModel"
+            type="com.giftm.toceleb.ui.splashviewpager.SplashViewPagerViewModel" />
+        <variable
+            name="nextClickListener"
+            type="android.view.View.OnClickListener" />
+        <variable
+            name="skipClickListener"
+            type="android.view.View.OnClickListener" />
+        
+    </data>
+    
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/item_splash_viewpager_layout"
+            android:background="@color/colorPrimary"
+            tools:context=".ui.splashviewpager.SplashViewPagerFragment">
+
+            <TextView
+                android:id="@+id/splash_viewpager_skip_txt"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:onClick="@{skipClickListener}"
+                android:text="SKIP"
+                android:textColor="@android:color/holo_red_dark"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/item_splash_viewpager_center_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/image_1" />
+
+            <LinearLayout
+                android:id="@+id/splash_viewpager_bottom_layout"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_above="@+id/splash_view_boundary"
+                android:gravity="center"
+                android:orientation="horizontal" />
+
+            <View
+                android:id="@+id/splash_view_boundary"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_above="@+id/splash_viewpager_next_btn"
+                android:alpha=".4"
+                android:background="@android:color/black" />
+
+            <Button
+                android:id="@+id/splash_viewpager_next_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="right"
+                android:background="@null"
+                android:onClick="@{nextClickListener}"
+                android:text="NEXT"
+                android:textColor="@android:color/white" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</layout>
